@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: parking-project
+
+  banner:
+    location: banner/banner-${spring.profiles}.txt
+
+  profiles:
+    active: dev
+    include:
+      - datasource
+
+
+
+server:
+  port: 8099
+
+
+
+
