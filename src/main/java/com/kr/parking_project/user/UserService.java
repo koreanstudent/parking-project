@@ -45,7 +45,7 @@ public class UserService {
     }
 
     public UserRes getUserDeatailsLoginId(String loginId) {
-        return  userRepository.findByLoginId(loginId)
+        return  userRepository.findUserByPhoneNumber(loginId)
                 .map(UserRes::new)
                 .orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_USER));
 

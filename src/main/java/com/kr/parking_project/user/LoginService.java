@@ -20,15 +20,15 @@ public class LoginService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
-        Account account = findUserByLoginId(loginId);
+    public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
+        Account account = findUserByPhoneNumber(phoneNumber);
         log.debug("LoginService account {}", account);
         return new User(account.getName(), account.getPhoneNumber(),true,true,true,true, new ArrayList<>());
     }
 
-    public Account findUserByLoginId(String loginId) {
-        return userRepository.findByLoginId(loginId)
+    public Account findUserByPhoneNumber(String phoneNumber) {
+        return userRepository.findUserByPhoneNumber(phoneNumber)
                 .map(Account::new)
-                .orElseThrow(() -> new UsernameNotFoundException(loginId));
+                .orElseThrow(() -> new UsernameNotFoundException(phoneNumber));
     }
 }
