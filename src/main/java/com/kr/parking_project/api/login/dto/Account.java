@@ -13,6 +13,7 @@ public class Account {
 
     private Long id;
     private String name;
+    private String password;
     private String phoneNumber;
 
 
@@ -20,6 +21,7 @@ public class Account {
     public Account(User entity) {
         this.id = entity.getId();
         this.name = entity.getName();
+        this.password =entity.getPassword();
         this.phoneNumber =entity.getPhoneNumber();
 
 

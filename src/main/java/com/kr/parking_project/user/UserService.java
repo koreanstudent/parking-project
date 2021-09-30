@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class UserService {
 
 
     public Long saveUser(UserSaveReq userDto) {
+        // 패스워드 암호화
+        String rawPassword = userDto.getPhoneNumber();
+        String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+        userDto.changePassword(encodedPassword);
+
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         User userEntity = modelMapper.map(userDto, User.class);
 
@@ -44,8 +50,8 @@ public class UserService {
 
     }
 
-    public UserRes getUserDeatailsLoginId(String loginId) {
-        return  userRepository.findUserByPhoneNumber(loginId)
+    public UserRes getUserDetailsPhoneNumber(String phoneNumber) {
+        return  userRepository.findUserByPhoneNumber(phoneNumber)
                 .map(UserRes::new)
                 .orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_USER));
 

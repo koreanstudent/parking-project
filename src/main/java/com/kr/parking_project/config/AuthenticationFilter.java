@@ -41,19 +41,22 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
+            log.debug( "attemptAuthentication : {}", request.getInputStream() );
 
             AccountGetReq creds = new ObjectMapper().readValue(request.getInputStream(),AccountGetReq.class);
+            log.debug( "creds : {}", creds );
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            creds.getLoginId(),
-                            creds.getPassword(),
+                            creds.getPhoneNumber(),
+                            creds.getPhoneNumber(),
                             new ArrayList<>()
                     )
             );
 
 
         } catch(IOException e) {
+            log.debug( "e : {}", e );
             throw new RuntimeException(e);
         }
     }
@@ -62,9 +65,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
         log.debug( "successfulAuthentication : {}",((User)authResult.getPrincipal()).getUsername() );
-        String userName = ((User)authResult.getPrincipal()).getUsername();
+        String PhoneNumber = ((User)authResult.getPrincipal()).getUsername();
 
-        UserRes UserDetails = userService.getUserDeatailsLoginId(userName);
+        UserRes UserDetails = userService.getUserDetailsPhoneNumber(PhoneNumber);
         String token = Jwts.builder()
                 .setSubject(UserDetails.getPhoneNumber())
                 .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(environment.getProperty("token.expiration_time"))))

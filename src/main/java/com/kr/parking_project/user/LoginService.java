@@ -23,7 +23,7 @@ public class LoginService implements UserDetailsService {
     public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
         Account account = findUserByPhoneNumber(phoneNumber);
         log.debug("LoginService account {}", account);
-        return new User(account.getName(), account.getPhoneNumber(),true,true,true,true, new ArrayList<>());
+        return new User(account.getPhoneNumber(), account.getPassword(),true,true,true,true, new ArrayList<>());
     }
 
     public Account findUserByPhoneNumber(String phoneNumber) {

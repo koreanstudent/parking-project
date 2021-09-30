@@ -1,3 +1,6 @@
+server:
+  port: 8099
+
 spring:
   application:
     name: parking-project
@@ -12,9 +15,16 @@ spring:
 
 
 
-server:
-  port: 8099
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    com.kr.parking_project: DEBUG
+    org.springframework.secruity: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 
 
 
+token:
+  expiration_time: 86400000
+  secret: user_token

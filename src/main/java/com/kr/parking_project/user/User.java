@@ -18,6 +18,9 @@ public class User {
     @Column(name="user_name")
     private String name;
 
+    @Column(name="user_pasword")
+    private String password;
+
     @Column(name="user_phone_number", unique = true)
     private String phoneNumber;
 

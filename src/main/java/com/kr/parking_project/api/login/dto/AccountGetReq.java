@@ -10,11 +10,11 @@ public class AccountGetReq {
 
     @NotBlank
     @Size(max = 16)
-    private String loginId;
+    private String name;
 
     @NotBlank
     @Size(max = 128)
-    private String password;
+    private String phoneNumber;
 
     private int sessionTimeout;
 }
