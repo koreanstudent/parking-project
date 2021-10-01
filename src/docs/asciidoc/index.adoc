@@ -1,0 +1,64 @@
+
+= REST API Guide
+이창현;
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:operation-path-parameters-title: 요청 필드
+:operation-request-fields-title: 요청 필드
+:operation-response-fields-title: 응답 필드
+:operation-http-request-title: http 요청
+:operation-http-response-title: http 응답
+
+[[login]]
+== 로그인
+
+operation::login-user[snippets='request-fields,http-request,http-response']
+
+[[resources-user]]
+== 사용자
+
+[[resources-user-findUsers]]
+=== 사용자 목록조회
+
+`GET` 요청을 사용해서 사용자 목록조회 할 수 있다.
+
+operation::find-users[snippets='response-fields,http-request,http-response']
+
+[[resources-user-findUser]]
+=== 사용자 단건조회
+
+`GET` 요청을 사용해서 사용자 단건조회 할 수 있다.
+
+operation::find-user[snippets='path-parameters,response-fields,http-request,http-response']
+
+[[resources-user-create]]
+=== 사용자 생성
+
+`POST` 요청을 사용해서 새 유저를 만들 수 있다.
+
+operation::create-user[snippets='request-fields,http-request,http-response']
+
+[[resources-user-update]]
+=== 사용자 수정
+
+`PUT` 요청을 사용해서 새 유저를 만들 수 있다.
+
+operation::update-user[snippets='request-fields,http-request,http-response']
+
+[[resources-user-delete]]
+=== 사용자 삭제
+
+`DELETE` 요청을 사용해서 새 유저를 만들 수 있다.
+
+operation::delete-user[snippets='path-parameters,http-request,http-response']
+
+
+
+
