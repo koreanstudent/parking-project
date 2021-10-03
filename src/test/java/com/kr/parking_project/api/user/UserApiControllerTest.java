@@ -49,7 +49,7 @@ public class UserApiControllerTest extends BaseTest {
         result
                 .andExpect(status().isCreated())
                 .andExpect(header().exists(HttpHeaders.LOCATION))
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, "application/json"))
+                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, "application/json;charset=UTF-8"))
                 .andDo(print())
                 .andDo(document("create-user",
                         requestHeaders(
