@@ -82,7 +82,7 @@ build {
 }
 
 openapi3 {
-    server = 'http://localhost:8080'
+    server = 'http://localhost:8099'
     title = 'User API'
     description = 'User Api Description'
     // tagDescriptionsPropertiesFile = 'src/docs/tag-descriptions.yaml'
