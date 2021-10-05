@@ -29,7 +29,7 @@ public class UserApiControllerTest extends BaseTest {
     @DisplayName("유저 저장 - /api/user")
     public void saveUser() throws Exception {
 
-        String phoneNumber = "01066722131";
+        String phoneNumber = "01066721111";
         String encodedPassword = new BCryptPasswordEncoder().encode(phoneNumber);
         UserSaveReq request = UserSaveReq.builder()
                 .name("이창현")

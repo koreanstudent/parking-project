@@ -37,18 +37,16 @@ public class UserService {
         return userRepository.save(userEntity).getId();
     }
 
-    public UserRes findUser(Long userId) {
-        return  userRepository.findById(userId)
+    /**
+     * [사용자] 단건 조회
+     */
+    public UserRes findUser(String phoneNumber) {
+        return  userRepository.findUserByPhoneNumber(phoneNumber)
                 .map(UserRes::new)
                 .orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_USER));
 
     }
 
-    public List<UserRes> findUsers() {
-        return userRepository.findAll()
-                .stream().map(UserRes::new).collect(Collectors.toList());
-
-    }
 
     public UserRes getUserDetailsPhoneNumber(String phoneNumber) {
         return  userRepository.findUserByPhoneNumber(phoneNumber)

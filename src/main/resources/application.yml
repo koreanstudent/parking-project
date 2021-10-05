@@ -23,8 +23,6 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 
-
-
 token:
   expiration_time: 86400000
   secret: user_token

@@ -8,4 +8,9 @@ public interface UserRepositoryCustom {
      */
     Optional<User> findUserByPhoneNumber(String loginId);
 
+    /**
+     * 중복 사용자 조회 (로그인 아이디)
+     */
+    boolean existsUserByPhoneNumber(String phoneNumber);
+
 }

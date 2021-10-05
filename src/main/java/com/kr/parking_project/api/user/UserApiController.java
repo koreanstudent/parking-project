@@ -38,19 +38,11 @@ public class UserApiController {
      * [사용자] 단건 조회
      */
     @GetMapping("/user/{userId}")
-    public ResponseEntity findUser(@PathVariable Long userId){
-        UserRes user = userService.findUser(userId);
+    public ResponseEntity findUser(@PathVariable String phoneNumber){
+        UserRes user = userService.findUser(phoneNumber);
 
         return ResponseEntity.ok(Result.success(user));
     }
 
-    /**
-     * [사용자] 다건 조회
-     */
-    @GetMapping("/user")
-    public ResponseEntity findUsers(){
-        List<UserRes> users = userService.findUsers();
 
-        return ResponseEntity.ok(Result.success(users));
-    }
 }

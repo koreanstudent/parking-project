@@ -22,7 +22,7 @@ public class LoginService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
         Account account = findUserByPhoneNumber(phoneNumber);
-        log.debug("LoginService account {}", account);
+        log.debug("LoginService loadUserByUsername {}", account);
         return new User(account.getPhoneNumber(), account.getPassword(),true,true,true,true, new ArrayList<>());
     }
 
