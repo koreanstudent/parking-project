@@ -37,7 +37,7 @@ public class UserApiController {
     /**
      * [사용자] 단건 조회
      */
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/{phoneNumber}")
     public ResponseEntity findUser(@PathVariable String phoneNumber){
         UserRes user = userService.findUser(phoneNumber);
 

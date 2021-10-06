@@ -24,6 +24,10 @@ public class User {
     @Column(name="user_phone_number", unique = true)
     private String phoneNumber;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private UserRole role; // 사용자구분
+
 
 
 }

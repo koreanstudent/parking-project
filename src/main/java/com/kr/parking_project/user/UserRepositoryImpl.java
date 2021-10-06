@@ -43,12 +43,6 @@ public class UserRepositoryImpl extends CustomQuerydslRepositorySupport implemen
         return Optional.ofNullable(fetchFirstUser).orElse(0) > 0;
     }
 
-
-
-
-
-
-
     /**
      * WHERE 절 조건
      */

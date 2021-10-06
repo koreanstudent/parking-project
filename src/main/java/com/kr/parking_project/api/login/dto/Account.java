@@ -2,6 +2,7 @@ package com.kr.parking_project.api.login.dto;
 
 
 import com.kr.parking_project.user.User;
+import com.kr.parking_project.user.UserRole;
 import lombok.*;
 
 @ToString
@@ -15,6 +16,7 @@ public class Account {
     private String name;
     private String password;
     private String phoneNumber;
+    private UserRole role;
 
 
 
@@ -23,6 +25,7 @@ public class Account {
         this.name = entity.getName();
         this.password =entity.getPassword();
         this.phoneNumber =entity.getPhoneNumber();
+        this.role = entity.getRole();
 
 
     }

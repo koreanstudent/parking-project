@@ -6,7 +6,7 @@ public interface UserRepositoryCustom {
     /**
      * 로그인 아이디로 사용자 조회
      */
-    Optional<User> findUserByPhoneNumber(String loginId);
+    Optional<User> findUserByPhoneNumber(String phoneNumber);
 
     /**
      * 중복 사용자 조회 (로그인 아이디)

@@ -47,11 +47,4 @@ public class UserService {
 
     }
 
-
-    public UserRes getUserDetailsPhoneNumber(String phoneNumber) {
-        return  userRepository.findUserByPhoneNumber(phoneNumber)
-                .map(UserRes::new)
-                .orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_USER));
-
-    }
 }

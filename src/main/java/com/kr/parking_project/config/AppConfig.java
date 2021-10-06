@@ -37,7 +37,7 @@ public class AppConfig {
 
     }
 
-    @Bean
+/*    @Bean
     @Profile({"dev"})
     public ApplicationRunner applicationRunner() {
         return new ApplicationRunner() {
@@ -63,5 +63,5 @@ public class AppConfig {
                 }
             }
         };
-    }
+    }*/
 }

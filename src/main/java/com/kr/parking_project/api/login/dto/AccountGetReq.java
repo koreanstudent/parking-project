@@ -16,8 +16,5 @@ public class AccountGetReq {
     @Size(max = 128)
     private String phoneNumber;
 
-
-
-
     private int sessionTimeout;
 }
