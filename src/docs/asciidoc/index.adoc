@@ -10,6 +10,7 @@ endif::[]
 :toc: left
 :toclevels: 4
 :sectlinks:
+:operation-curl-request-title: curl request
 :operation-path-parameters-title: 요청 필드
 :operation-request-fields-title: 요청 필드
 :operation-response-fields-title: 응답 필드
@@ -19,7 +20,7 @@ endif::[]
 [[login]]
 == 로그인
 
-operation::login-user[snippets='request-fields,http-request,http-response']
+operation::login-user[snippets='request-fields,http-request,http-response,curl-request']
 
 [[resources-user]]
 == 사용자
@@ -43,7 +44,7 @@ operation::find-user[snippets='path-parameters,response-fields,http-request,http
 
 `POST` 요청을 사용해서 새 유저를 만들 수 있다.
 
-operation::create-user[snippets='request-fields,http-request,http-response']
+operation::create-user[snippets='request-fields,http-request,http-response,curl-request']
 
 [[resources-user-update]]
 === 사용자 수정

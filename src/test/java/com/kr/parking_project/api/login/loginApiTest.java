@@ -34,15 +34,14 @@ public class loginApiTest extends BaseTest {
 
         AccountGetReq request = new AccountGetReq();
         request.setName("이창현");
-        request.setPhoneNumber("01066722131");
+        request.setPhoneNumber("01066722132");
         ResultActions result = mockMvc.perform(
-                RestDocumentationRequestBuilders.post("/login")
+                RestDocumentationRequestBuilders.post("/api/authenticate")
                         .content(objectMapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         );
 
-        System.out.println(content().json("{'userName':'이창현'}"));
         result
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -53,21 +52,10 @@ public class loginApiTest extends BaseTest {
                         requestFields(
                                 fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),
                                 fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰번호")
-
-
                         ),
                         responseFields(
-                                fieldWithPath("data.userId").type(JsonFieldType.NUMBER).description("유저아이디"),
-                                fieldWithPath("data.name").type(JsonFieldType.STRING).description("유저이름"),
-                                fieldWithPath("data.loginId").type(JsonFieldType.STRING).description("로그인 아이디"),
-                                fieldWithPath("data.password").type(JsonFieldType.STRING).description("비밀번호"),
-                                fieldWithPath("data.permissions").type(JsonFieldType.STRING).description("권한"),
-                                fieldWithPath("code").type(JsonFieldType.STRING).description("코드"),
-                                fieldWithPath("message").type(JsonFieldType.STRING).description("메세지"),
-                                fieldWithPath("isSuccess").type(JsonFieldType.BOOLEAN).description("성공여부")
-
+                                fieldWithPath("token").type(JsonFieldType.STRING).description("토큰")
                         )
-
                 ));
     }
 }
