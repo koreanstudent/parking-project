@@ -49,9 +49,9 @@ public class AppConfig {
 
 
                 ModelMapper mapper = new ModelMapper();
-                String encodedPassword = new BCryptPasswordEncoder().encode("0106672131");
-                System.out.println("checkNumber ::" + userRepository.existsUserByPhoneNumber("0106672131"));
-                if(!userRepository.existsUserByPhoneNumber("0106672131")){
+                String encodedPassword = new BCryptPasswordEncoder().encode("01066722131");
+                System.out.println("checkNumber ::" + userRepository.existsUserByPhoneNumber("01066722131"));
+                if(!userRepository.existsUserByPhoneNumber("01066722131")){
                     UserSaveReq user = UserSaveReq.builder()
                             .name("이창현")
                             .password(encodedPassword)

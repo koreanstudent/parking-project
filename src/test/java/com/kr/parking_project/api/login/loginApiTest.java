@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -19,8 +20,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class loginApiTest extends BaseTest {
 
@@ -42,9 +42,9 @@ public class loginApiTest extends BaseTest {
                         .accept(MediaType.APPLICATION_JSON)
         );
 
+        System.out.println(content().json("{'userName':'이창현'}"));
         result
                 .andExpect(status().isOk())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, "application/json;charset=UTF-8"))
                 .andDo(print())
                 .andDo(document("login-user",
                         requestHeaders(
@@ -52,8 +52,8 @@ public class loginApiTest extends BaseTest {
                         ),
                         requestFields(
                                 fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),
-                                fieldWithPath("password").type(JsonFieldType.STRING).description("비밀번호"),
-                                fieldWithPath("sessionTimeout").type(JsonFieldType.NUMBER).description("세션 타임 아웃")
+                                fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰번호")
+
 
                         ),
                         responseFields(
