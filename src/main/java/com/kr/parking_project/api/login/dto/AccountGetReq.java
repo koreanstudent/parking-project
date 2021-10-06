@@ -19,5 +19,4 @@ public class AccountGetReq {
 
 
 
-    private int sessionTimeout;
 }
