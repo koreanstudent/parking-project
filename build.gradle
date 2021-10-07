@@ -71,9 +71,13 @@ test {
 
 asciidoctor {
     inputs.dir snippetsDir  // REST Docs API (6)
-    dependsOn test          // // REST Docs API (7) gradle build 시 test → asciidoctor 순으로 수행됩니다.
+    dependsOn test          //  REST Docs API (7) gradle build 시 test → asciidoctor 순으로 수행됩니다.
+
 }
 
+asciidoctor.doFirst {
+    delete file('src/main/resources/static/docs')
+}
 // REST Docs API (8)
 task copyDocument(type: Copy) {
     dependsOn asciidoctor
