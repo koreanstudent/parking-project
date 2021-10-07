@@ -6,12 +6,16 @@ spring:
     name: parking-project
 
   banner:
-    location: banner/banner-${spring.profiles}.txt
+    location: banner/banner-${spring.profiles.active}.txt
+
 
   profiles:
     active: dev
-    include:
-      - datasource
+    group:
+      dev: devdb
+      test: testdb
+      prod: proddb
+    include: datasource
 
 
 

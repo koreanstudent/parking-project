@@ -8,7 +8,9 @@ spring:
 
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: devdb
   h2:
     console:
       enabled: true
@@ -27,6 +29,7 @@ spring:
         format_sql: true
     defer-datasource-initialization: true
   #        show_sql: true
+
 #    datasource:
 #      driver-class-name: org.mariadb.jdbc.Driver
 #      url: jdbc:mariadb://211.206.132.104:3306/msa
@@ -49,7 +52,9 @@ decorator:
 
 ---
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: testdb
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
@@ -72,7 +77,9 @@ decorator:
 
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: proddb
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
