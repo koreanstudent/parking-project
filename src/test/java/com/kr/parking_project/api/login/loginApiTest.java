@@ -52,6 +52,7 @@ public class loginApiTest extends BaseTest {
                         requestFields(
                                 fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),
                                 fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("휴대폰번호")
+
                         ),
                         responseFields(
                                 fieldWithPath("token").type(JsonFieldType.STRING).description("토큰")

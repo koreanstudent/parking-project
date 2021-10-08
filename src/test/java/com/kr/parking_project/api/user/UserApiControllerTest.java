@@ -2,11 +2,13 @@ package com.kr.parking_project.api.user;
 
 import com.kr.parking_project.api.user.dto.UserSaveReq;
 import com.kr.parking_project.common.BaseTest;
+import com.kr.parking_project.user.UserRole;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.ResultActions;
@@ -22,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WithMockUser
-
 public class UserApiControllerTest extends BaseTest {
 
     @Test
@@ -35,6 +36,7 @@ public class UserApiControllerTest extends BaseTest {
                 .name("이창현")
                 .password(encodedPassword)
                 .phoneNumber(phoneNumber)
+                .role(UserRole.USER)
                 .build();
 
 
@@ -58,7 +60,8 @@ public class UserApiControllerTest extends BaseTest {
                         requestFields(
                                 fieldWithPath("name").description("이름"),
                                 fieldWithPath("password").description("비밀번호"),
-                                fieldWithPath("phoneNumber").description("휴대폰번호")
+                                fieldWithPath("phoneNumber").description("휴대폰번호"),
+                                fieldWithPath("role").type(JsonFieldType.STRING).description("권한")
                         )
 
                 ));
