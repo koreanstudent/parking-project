@@ -64,7 +64,7 @@ public class UserService {
 
         if(!updateReq.getPhoneNumber().equals(user.getPhoneNumber())){
             if (userRepository.existsUserByPhoneNumber(updateReq.getPhoneNumber())) {
-                throw new BusinessException(ErrorCode.EXISTS_USER_PHONE_NUMBER);
+               throw new BusinessException(ErrorCode.EXISTS_USER_PHONE_NUMBER);
             }
 
             String rawPassword = updateReq.getPhoneNumber();
@@ -80,5 +80,15 @@ public class UserService {
         );
       return user.getId();
 
+    }
+    /**
+     * [사용자] 단건 삭제
+     */
+    @Transactional
+    public void deleteUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.NOT_FOUND_USER));
+
+        userRepository.delete(user);
     }
 }

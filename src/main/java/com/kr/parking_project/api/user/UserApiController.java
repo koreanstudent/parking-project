@@ -56,5 +56,15 @@ public class UserApiController {
         return ResponseEntity.ok(Result.success(new UserRes(updatedId)));
     }
 
+    /**
+     * [사용자] 단건 삭제
+     */
+    @DeleteMapping("/users/{userId}")
+    public ResponseEntity updateUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
+
+        return ResponseEntity.ok(Result.success());
+    }
+
 
 }
