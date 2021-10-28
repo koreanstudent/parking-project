@@ -16,6 +16,10 @@ public class UserRes {
     private String phoneNumber;
 
 
+    public UserRes(Long id) {
+        this.id = id;
+    }
+
     public UserRes(User entity) {
         this.id = entity.getId();
         this.name = entity.getName();

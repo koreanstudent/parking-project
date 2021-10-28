@@ -33,6 +33,17 @@ public class UserRepositoryImpl extends CustomQuerydslRepositorySupport implemen
     }
 
     @Override
+    public Optional<User> findUserByUserId(Long userId) {
+        final User fetchUser = queryFactory
+                .selectFrom(user)
+                .where(eq(user.id,userId))
+                .fetchOne();
+
+        return Optional.ofNullable(fetchUser);
+
+    }
+
+    @Override
     public boolean existsUserByPhoneNumber(String phoneNumber) {
         final Integer fetchFirstUser = queryFactory
                 .selectOne()

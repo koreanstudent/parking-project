@@ -3,6 +3,7 @@ package com.kr.parking_project.api.user;
 
 import com.kr.parking_project.api.user.dto.UserRes;
 import com.kr.parking_project.api.user.dto.UserSaveReq;
+import com.kr.parking_project.api.user.dto.UserUpdateReq;
 import com.kr.parking_project.response.Result;
 import com.kr.parking_project.user.UserService;
 import com.kr.parking_project.utill.HttpUtill;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -27,8 +29,8 @@ public class UserApiController {
     /**
      * [사용자] 단건 등록
      */
-    @PostMapping("/user")
-    public ResponseEntity saveUser(@RequestBody UserSaveReq saveReq) throws URISyntaxException {
+    @PostMapping("/users")
+    public ResponseEntity saveUser(@Valid @RequestBody UserSaveReq saveReq) throws URISyntaxException {
         Long id = userService.saveUser(saveReq);
 
         return ResponseEntity.created(HttpUtill.getCurrentUri(id))
@@ -37,11 +39,21 @@ public class UserApiController {
     /**
      * [사용자] 단건 조회
      */
-    @GetMapping("/user/{phoneNumber}")
-    public ResponseEntity findUser(@PathVariable String phoneNumber){
-        UserRes user = userService.findUser(phoneNumber);
+    @GetMapping("/users/{userId}")
+    public ResponseEntity findUser(@PathVariable Long userId){
+        UserRes user = userService.findUser(userId);
 
         return ResponseEntity.ok(Result.success(user));
+    }
+
+    /**
+     * [사용자] 단건 수정
+     */
+    @PutMapping("/users/{userId}")
+    public ResponseEntity updateUser(@PathVariable Long userId, @Valid @RequestBody UserUpdateReq updateReq){
+        Long updatedId = userService.updateUser(userId,updateReq);
+
+        return ResponseEntity.ok(Result.success(new UserRes(updatedId)));
     }
 
 
