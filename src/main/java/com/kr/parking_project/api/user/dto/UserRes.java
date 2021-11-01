@@ -1,11 +1,8 @@
 package com.kr.parking_project.api.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kr.parking_project.user.User;
+import com.kr.parking_project.domain.user.User;
 import lombok.Getter;
-
-import java.util.List;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)

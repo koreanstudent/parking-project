@@ -1,15 +1,13 @@
 package com.kr.parking_project.api.login;
 
 import com.kr.parking_project.api.login.dto.AccountGetReq;
-import com.kr.parking_project.api.user.dto.UserRes;
 import com.kr.parking_project.common.BaseTest;
-import com.kr.parking_project.user.UserService;
+import com.kr.parking_project.domain.user.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -34,7 +32,7 @@ public class loginApiTest extends BaseTest {
 
         AccountGetReq request = new AccountGetReq();
         request.setName("이창현");
-        request.setPhoneNumber("01066722132");
+        request.setPhoneNumber("01066722131");
         ResultActions result = mockMvc.perform(
                 RestDocumentationRequestBuilders.post("/api/authenticate")
                         .content(objectMapper.writeValueAsString(request))
@@ -55,6 +53,10 @@ public class loginApiTest extends BaseTest {
 
                         ),
                         responseFields(
+                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("사용자ID"),
+                                fieldWithPath("name").type(JsonFieldType.STRING).description("사용자이름"),
+                                fieldWithPath("phoneNumber").type(JsonFieldType.STRING).description("사용자휴대폰번호"),
+                                fieldWithPath("role").type(JsonFieldType.STRING).description("사용자권한"),
                                 fieldWithPath("token").type(JsonFieldType.STRING).description("토큰")
                         )
                 ));

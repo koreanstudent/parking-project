@@ -1,4 +1,4 @@
-package com.kr.parking_project.user;
+package com.kr.parking_project.domain.user;
 
 
 import com.kr.parking_project.common.CustomQuerydslRepositorySupport;
@@ -9,7 +9,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.List;
 import java.util.Optional;
 
-import static com.kr.parking_project.user.QUser.user;
+import static com.kr.parking_project.domain.user.QUser.user;
 
 
 public class UserRepositoryImpl extends CustomQuerydslRepositorySupport implements UserRepositoryCustom {

@@ -1,4 +1,4 @@
-package com.kr.parking_project.user;
+package com.kr.parking_project.domain.user;
 
 import java.util.Optional;
 

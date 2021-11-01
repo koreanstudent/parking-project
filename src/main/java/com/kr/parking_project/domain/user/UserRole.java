@@ -1,4 +1,4 @@
-package com.kr.parking_project.user;
+package com.kr.parking_project.domain.user;
 
 
 import com.kr.parking_project.common.EnumMapperType;

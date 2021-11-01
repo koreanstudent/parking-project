@@ -1,4 +1,4 @@
-package com.kr.parking_project.user;
+package com.kr.parking_project.domain.user;
 
 
 import com.kr.parking_project.api.user.dto.UserRes;
@@ -14,8 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -38,6 +36,7 @@ public class UserService {
         userDto.changePassword(encodedPassword);
 
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        // @Setter 있어야함.. 고민
         User userEntity = modelMapper.map(userDto, User.class);
 
         return userRepository.save(userEntity).getId();

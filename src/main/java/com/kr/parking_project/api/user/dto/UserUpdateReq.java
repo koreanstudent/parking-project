@@ -1,6 +1,6 @@
 package com.kr.parking_project.api.user.dto;
 
-import com.kr.parking_project.user.UserRole;
+import com.kr.parking_project.domain.user.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

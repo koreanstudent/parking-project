@@ -5,19 +5,20 @@ import com.kr.parking_project.api.user.dto.UserRes;
 import com.kr.parking_project.api.user.dto.UserSaveReq;
 import com.kr.parking_project.api.user.dto.UserUpdateReq;
 import com.kr.parking_project.response.Result;
-import com.kr.parking_project.user.UserService;
+import com.kr.parking_project.domain.user.UserService;
 import com.kr.parking_project.utill.HttpUtill;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URISyntaxException;
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class UserApiController {
 
     private final UserService userService;

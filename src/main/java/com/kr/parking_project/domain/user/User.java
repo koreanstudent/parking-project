@@ -1,12 +1,18 @@
-package com.kr.parking_project.user;
+package com.kr.parking_project.domain.user;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Entity
-@Data
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name ="user_table")
+@Entity
 public class User {
 
     @Id
@@ -15,17 +21,21 @@ public class User {
     private Long id;
 
 
-    @Column(name="user_name", length = 16, nullable = false)
+    @Column(name="user_name", length = 16 )
+    @NotNull
     private String name;
 
-    @Column(name="user_pasword",  length = 128, nullable = false)
+    @Column(name="user_pasword",  length = 128)
+    @NotNull
     private String password;
 
-    @Column(name = "user_phone_number", length = 11, nullable = false, unique = true)
+    @Column(name = "user_phone_number", length = 11, unique = true)
+    @NotNull
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role", length = 16, nullable = false)
+    @Column(name = "user_role", length = 16)
+    @NotNull
     private UserRole role; // 사용자구분
 
     public void update(String name, String password, String phoneNumber, UserRole role){

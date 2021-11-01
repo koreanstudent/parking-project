@@ -1,8 +1,8 @@
 package com.kr.parking_project.api.login.dto;
 
 
-import com.kr.parking_project.user.User;
-import com.kr.parking_project.user.UserRole;
+import com.kr.parking_project.domain.user.User;
+import com.kr.parking_project.domain.user.UserRole;
 import lombok.*;
 
 @ToString
