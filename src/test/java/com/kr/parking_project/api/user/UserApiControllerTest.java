@@ -33,8 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class UserApiControllerTest extends BaseTest {
 
-    @Autowired
-    private Validator validate;
 
     @Test
     @DisplayName("유저 저장 - /api/users")
